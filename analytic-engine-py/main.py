@@ -36,7 +36,16 @@ def analyze_stock(symbol: str):
         # Pass individual float values to analyze_trend
         trend = analyze_trend(rsi_val, macd_val['macd'], macd_val['signal'])
         
-        # 4. Return Format JSON
+        # 4. Generate AI Summary (Real AI now!)
+        ai_summary = "AI model loading..."
+        try:
+            from app.services.llm import ai_engine
+            ai_summary = ai_engine.analyze(symbol, current_data['price'], rsi_val, trend)
+        except Exception as ai_err:
+            print(f"AI Error: {ai_err}")
+            ai_summary = f"AI Failed: {ai_err}"
+
+        # 5. Return Format JSON
         return AnalysisResult(
             symbol=symbol,
             current_price=float(current_data['price']),
@@ -46,7 +55,7 @@ def analyze_stock(symbol: str):
                 macd_signal=float(macd_val['signal']),
                 signal=trend
             ),
-            summary=f"Saham {symbol} saat ini berada di level RSI {rsi_val:.2f}. Status: {trend}. (AI Analysis Coming Soon)"
+            summary=ai_summary
         )
 
     except Exception as e:

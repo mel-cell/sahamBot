@@ -5,3 +5,6 @@ pandas
 numpy
 requests
 python-dotenv
+transformers
+accelerate
+sentencepiece
