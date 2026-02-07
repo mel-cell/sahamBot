@@ -1,1 +1,39 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Python Tools
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# --- Golang ---
+# Binaries
+bot-service-go/bot
+bot-service-go/*.exe
+bot-service-go/*.test
+bot-service-go/*.out
+
+# Vendor directory (optional, usually ignored)
+vendor/
+
+# --- Environment Variables (CRITICAL!) ---
+.env
+.env.local
+*.env
+
+# --- Editor / IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+#temp
 rules.md
